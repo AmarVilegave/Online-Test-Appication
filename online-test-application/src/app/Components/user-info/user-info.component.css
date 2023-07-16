@@ -1,0 +1,19 @@
+.submit {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+button {
+  margin-top: 10px;
+}
+
+.noDisplay {
+  display: none;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
