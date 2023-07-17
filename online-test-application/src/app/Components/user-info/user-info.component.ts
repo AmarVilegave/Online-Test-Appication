@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { TestService } from 'src/app/Service/test.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-info',
@@ -8,7 +10,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor(private fb:FormBuilder) { }
+  candidateObject: any = null;
+
+  constructor(private fb:FormBuilder,
+    private testService:TestService,
+    private router:Router) { }
 
   userInfoForm = this.fb.group({
     firstName : ['', [Validators.required]],
@@ -19,6 +25,37 @@ export class UserInfoComponent implements OnInit {
   })
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    const newUser = {
+      fullName : this.userInfoForm.get('firstName').value +" " +this.userInfoForm.get('lastName').value,
+      id: this.userInfoForm.get('email').value,
+    }
+    console.log(newUser)
+    this.testService.getCandidateObject(newUser.id).subscribe((res) => {
+      console.log('res', res);
+      this.candidateObject = res;
+      if(this.candidateObject != null) {
+        alert('user already exist')
+
+      } else{
+        this.testService.updateCandidateData(newUser).subscribe((res) => {})
+        this.router.navigateByUrl(`test/${newUser.id}`)
+
+
+      }
+    },error => {
+      console.log('error', error)
+      if(error.status === 404) {
+        this.testService.updateCandidateData(newUser).subscribe((res) => {})
+        this.router.navigateByUrl(`test/${newUser.id}`)
+      }
+    })
+
+
+
+
   }
 
 }

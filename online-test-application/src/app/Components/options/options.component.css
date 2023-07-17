@@ -1,0 +1,9 @@
+.one {
+  max-width: 800px;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.two {
+  justify-content: end;
+}

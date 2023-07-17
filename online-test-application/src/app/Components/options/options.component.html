@@ -1,1 +1,53 @@
-<p>options works!</p>
+<form>
+  <div class="form-group">
+    <ol
+      *ngFor="let option of questions[currentIndex]?.options"
+      class="list-group"
+    >
+      <li class="list-group-item m-2">
+        <input
+          [checked]="
+          option.id == questions[currentIndex].answerSelected ? true : false
+        "
+          class="form-check-input me-1"
+          type="radio"
+          name="options"
+          value="{{ option.id }}"
+          id="firstRadio"
+          (change)="
+getAnswer(questions[currentIndex], option.id, option.correct)
+"
+
+        />
+        <label class="form-check-label px-3" for="firstRadio">
+          {{ option.text }}
+        </label>
+      </li>
+    </ol>
+    <div class="d-flex justify-content-between">
+      <div>
+        <button
+          [disabled]="currentIndex === 0"
+          class="btn btn-outline-primary"
+          (click)="onPreClick(currentIndex)"
+        >
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <button
+          [disabled]="currentIndex === 8"
+          class="btn btn-outline-primary"
+          (click)="onNextClick(currentIndex)"
+        >
+          <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
+      <input
+        type="submit"
+        class="btn btn-block bg-primary text-light"
+        (click)="onSubmit()"
+      />
+    </div>
+  </div>
+</form>
+
+

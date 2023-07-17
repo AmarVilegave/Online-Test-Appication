@@ -1,1 +1,24 @@
-<p>questions works!</p>
+<div class="container col-md-6 bg-light p-3 mt-3">
+  <div class="d-flex justify-content-between">
+    <div>
+      <p class="fs-5">Question {{ index + 1 }} of {{ questionsList.length }}</p>
+    </div>
+    <div>
+      <p class="fs-5">Time : {{ countDown }}</p>
+    </div>
+  </div>
+  <div>
+    <h5>
+      {{ questionsList[index]?.questionText }}
+    </h5>
+  </div>
+  <app-options
+    (optionChange)="changeAns($event)"
+    [questions]="questionsList"
+    [candidateQuestions]="candidateQuestions"
+    [currentIndex]="index"
+    (nextClick)="next()"
+    (preClick)="previous()"
+    (updateAnswers)="updateCandidatesAnswers()"
+  ></app-options>
+</div>
