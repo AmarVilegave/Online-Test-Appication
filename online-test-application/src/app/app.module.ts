@@ -11,6 +11,7 @@ import { UserInfoComponent } from './Components/user-info/user-info.component';
 import { TestPageComponent } from './Components/test-page/test-page.component';
 import { QuestionsComponent } from './Components/questions/questions.component';
 import { OptionsComponent } from './Components/options/options.component';
+import { ResultPageComponent } from './Components/result-page/result-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { OptionsComponent } from './Components/options/options.component';
     UserInfoComponent,
     TestPageComponent,
     QuestionsComponent,
-    OptionsComponent
+    OptionsComponent,
+    ResultPageComponent
   ],
   imports: [
     BrowserModule,

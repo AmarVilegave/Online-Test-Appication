@@ -74,7 +74,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   updateCandidatesAnswers() {
-    let url = `http://localhost:5000/answers/${this.candidateInfo.id}`
+    let url = `http://localhost:5000/candidatesData/${this.candidateInfo.id}`
 
     this.correctAns = 0;
     this.wrongAns = 0;

@@ -32,9 +32,7 @@ export class UserInfoComponent implements OnInit {
       fullName : this.userInfoForm.get('firstName').value +" " +this.userInfoForm.get('lastName').value,
       id: this.userInfoForm.get('email').value,
     }
-    console.log(newUser)
     this.testService.getCandidateObject(newUser.id).subscribe((res) => {
-      console.log('res', res);
       this.candidateObject = res;
       if(this.candidateObject != null) {
         alert('user already exist')
@@ -46,7 +44,7 @@ export class UserInfoComponent implements OnInit {
 
       }
     },error => {
-      console.log('error', error)
+
       if(error.status === 404) {
         this.testService.updateCandidateData(newUser).subscribe((res) => {})
         this.router.navigateByUrl(`test/${newUser.id}`)
