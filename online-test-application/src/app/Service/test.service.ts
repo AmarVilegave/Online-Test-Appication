@@ -8,7 +8,7 @@ import {Observable, of, BehaviorSubject} from 'rxjs';
 export class TestService {
   questions:any[] = [];
   index:number=0;
-  time:number =60;
+  time:number =600;
   timeSubject= new BehaviorSubject(this.time)
   private url: any = 'http://localhost:5000/questions';
   private url2: any = 'http://localhost:5000/candidatesData';
