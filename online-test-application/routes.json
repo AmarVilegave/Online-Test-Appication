@@ -1,0 +1,3 @@
+{
+  "/answers/:id/questions/:qid": "questions?id=:qid"
+}
